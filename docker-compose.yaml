@@ -43,6 +43,6 @@ services:
     - '8125:8125/udp'
 
 volumes:
-  grafana_data: {}
+  grafana-storage: {}
   influxdb-storage: {}
   chronograf-storage: {}
