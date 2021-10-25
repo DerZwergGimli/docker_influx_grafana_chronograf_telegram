@@ -1,7 +1,7 @@
 version: '3.6'
 services:
   influxdb:
-    image: influxdb:1.8-alpine
+    image: influxdb:1.8
     env_file: configuration.env
     ports:
       - '8086:8086'
