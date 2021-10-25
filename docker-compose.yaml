@@ -42,7 +42,7 @@ services:
     ports:
     - '8125:8125/udp'
 
-  volumes:
-    grafana_data: {}
-    influxdb-storage: {}
-    chronograf-storage: {}
+volumes:
+  grafana_data: {}
+  influxdb-storage: {}
+  chronograf-storage: {}
