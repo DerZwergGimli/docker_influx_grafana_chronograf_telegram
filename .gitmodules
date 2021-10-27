@@ -1,0 +1,3 @@
+[submodule "docker_telegraf_python3"]
+	path = docker_telegraf_python3
+	url = https://github.com/DerZwergGimli/docker_telegraf_python3.git
