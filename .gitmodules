@@ -4,3 +4,6 @@
 [submodule "externals/python/Viessmann_API_InfluxDB_Logger"]
 	path = externals/python/Viessmann_API_InfluxDB_Logger
 	url = https://github.com/DerZwergGimli/Viessmann_API_InfluxDB_Logger.git
+[submodule "externals/docker/container/docker_telegraf_python3"]
+	path = externals/docker/container/docker_telegraf_python3
+	url = https://github.com/DerZwergGimli/docker_telegraf_python3.git
