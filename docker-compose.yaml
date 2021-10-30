@@ -26,15 +26,26 @@ services:
       - '3000:3000'
     volumes:
       - grafana-storage:/var/lib/grafana
-      - ./grafana-provisioning/:/etc/grafana/provisioning
+      - ./grafana/provisioning/:/etc/grafana/provisioning
       - ./grafana/dashboards/:/var/lib/grafana/dashboards/
     depends_on:
       - influxdb
+  
+  viessmannapi:
+    build:
+      context: externals/docker/container/docker_corn_python
+      dockerfile: Dockerfile
+    image: viessmannapiimage
+    #volumes:
+      #- ./externals/docker/container/docker_corn_python/etc/crontab:/etc/cron.d/jobs
+      #- ./externals/python/Viessmann_API_InfluxDB_Logger:/home/python/viessmannAPI
+    depends_on:
+      - influxdb
+    links:
+      - influxdb
 
   telegraf:
-    build:
-      context: docker_telegraf_python3
-      dockerfile: Dockerfile
+    image: chronograf:1.8
     volumes:
       - ./telegraf/etc/telegraf.conf:/etc/telegraf/telegraf.conf:ro
     depends_on:
@@ -59,3 +70,4 @@ volumes:
   grafana-storage: {}
   influxdb-storage: {}
   chronograf-storage: {}
+  viessmann-storage: {}

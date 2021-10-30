@@ -10,7 +10,7 @@ deleteDatasources:
 # whats available in the database
 datasources:
   # <string, required> name of the datasource. Required
-- name: InfluxDB
+- name: influx_System
   # <string, required> datasource type. Required
   type: influxdb
   # <string, required> access mode. direct or proxy. Required
@@ -24,12 +24,12 @@ datasources:
   # <string> database user, if used
   user: "admin"
   # <string> database name, if used
-  database: "influx"
+  database: "System"
   # <bool> enable/disable basic auth
   basicAuth: false
 #  withCredentials:
   # <bool> mark as default datasource. Max one per org
-  isDefault: true
+  isDefault: false
   # <map> fields that will be converted to json and stored in json_data
   jsonData:
     timeInterval: "5s"
@@ -42,5 +42,38 @@ datasources:
 #    tlsClientCert: "..."
 #    tlsClientKey: "..."
   version: 1
-  # <bool> allow users to edit datasources from the UI.
   editable: false
+  # <string, required> name of the datasource. Required
+- name: influx_OpenWeatherMap
+  # <string, required> datasource type. Required
+  type: influxdb
+  # <string, required> access mode. direct or proxy. Required
+  access: proxy
+  # <int> org id. will default to orgId 1 if not specified
+  orgId: 1
+  # <string> url
+  url: http://influxdb:8086
+  # <string> database password, if used
+  password: "admin"
+  # <string> database user, if used
+  user: "admin"
+  # <string> database name, if used
+  database: "OpenWeatherMap"
+  # <bool> enable/disable basic auth
+  basicAuth: false
+#  withCredentials:
+  # <bool> mark as default datasource. Max one per org
+  isDefault: false
+  # <map> fields that will be converted to json and stored in json_data
+  jsonData:
+    timeInterval: "5s"
+#     graphiteVersion: "1.1"
+#     tlsAuth: false
+#     tlsAuthWithCACert: false
+#  # <string> json object of data that will be encrypted.
+#  secureJsonData:
+#    tlsCACert: "..."
+#    tlsClientCert: "..."
+#    tlsClientKey: "..."
+  version: 1
+  editable: true
