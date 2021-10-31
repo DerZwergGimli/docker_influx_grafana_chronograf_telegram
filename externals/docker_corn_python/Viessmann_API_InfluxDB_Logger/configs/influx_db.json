@@ -1,9 +1,0 @@
-{
-    "credentials": {
-        "address": "influxdb",
-        "port": 8086,
-        "user": "admin",
-        "password": "admin",
-        "database_name": "heizung"
-    }
-}
