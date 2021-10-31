@@ -38,7 +38,7 @@ services:
   
   viessmannapi:
     build:
-      context: externals/docker/container/docker_corn_python
+      context: externals/docker_corn_python
       dockerfile: Dockerfile
     image: viessmannapiimage
     depends_on:

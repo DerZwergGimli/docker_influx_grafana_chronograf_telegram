@@ -1,0 +1,2 @@
+5 * * * * cd /home/python/Viessmann_API_InfluxDB_Logger && python3 python_viessmannapi.py -r > /home/cronLog.log 2>&1
+
