@@ -6,7 +6,6 @@ services:
     ports:
       - '8086:8086'
     volumes:
-      #- ./:/imports
       - influxdb-storage:/var/lib/influxdb
     environment:
       TZ: "Europe/Berlin"
@@ -42,9 +41,6 @@ services:
       context: externals/docker/container/docker_corn_python
       dockerfile: Dockerfile
     image: viessmannapiimage
-    #volumes:
-      #- ./externals/docker/container/docker_corn_python/etc/crontab:/etc/cron.d/jobs
-      #- ./externals/python/Viessmann_API_InfluxDB_Logger:/home/python/viessmannAPI
     depends_on:
       - influxdb
     links:
@@ -65,17 +61,6 @@ services:
     environment:
       TZ: "Europe/Berlin"
       
-  #telegraf:
-  #  image: telegraf:1.18
-  #  volumes:
-  #  - ./telegraf/etc/telegraf.conf:/etc/telegraf/telegraf.conf:ro
-  #  depends_on:
-  #    - influxdb
-  #  links:
-  #    - influxdb
-  #  ports:
-  #  - '8125:8125/udp'
-
 volumes:
   grafana-storage: {}
   influxdb-storage: {}

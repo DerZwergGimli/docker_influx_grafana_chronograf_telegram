@@ -22,7 +22,7 @@
   "fiscalYearStartMonth": 0,
   "gnetId": null,
   "graphTooltip": 0,
-  "iteration": 1635697832049,
+  "iteration": 1635708921190,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -65,7 +65,8 @@
       "id": 29,
       "options": {
         "frameIndex": 2,
-        "showHeader": true
+        "showHeader": true,
+        "sortBy": []
       },
       "pluginVersion": "8.2.2",
       "targets": [
@@ -74,15 +75,9 @@
           "groupBy": [
             {
               "params": [
-                "$__interval"
+                "tag_2"
               ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "none"
-              ],
-              "type": "fill"
+              "type": "tag"
             }
           ],
           "measurement": "heating.circuits.1",
@@ -99,12 +94,8 @@
                 "type": "field"
               },
               {
-                "params": [],
-                "type": "last"
-              },
-              {
                 "params": [
-                  "curcuit_name"
+                  "value"
                 ],
                 "type": "alias"
               }
@@ -117,15 +108,9 @@
           "groupBy": [
             {
               "params": [
-                "$interval"
+                "tag_2"
               ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "none"
-              ],
-              "type": "fill"
+              "type": "tag"
             }
           ],
           "hide": false,
@@ -141,16 +126,6 @@
                   "value"
                 ],
                 "type": "field"
-              },
-              {
-                "params": [],
-                "type": "last"
-              },
-              {
-                "params": [
-                  "mode_active"
-                ],
-                "type": "alias"
               }
             ]
           ],
@@ -161,15 +136,9 @@
           "groupBy": [
             {
               "params": [
-                "$interval"
+                "tag_2"
               ],
-              "type": "time"
-            },
-            {
-              "params": [
-                "none"
-              ],
-              "type": "fill"
+              "type": "tag"
             }
           ],
           "hide": false,
@@ -187,12 +156,75 @@
                 "type": "field"
               },
               {
-                "params": [],
-                "type": "last"
+                "params": [
+                  "value"
+                ],
+                "type": "alias"
+              }
+            ]
+          ],
+          "tags": []
+        },
+        {
+          "alias": "name",
+          "groupBy": [
+            {
+              "params": [
+                "tag2"
+              ],
+              "type": "tag"
+            }
+          ],
+          "hide": false,
+          "measurement": "heating.circuits.2",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "D",
+          "resultFormat": "table",
+          "select": [
+            [
+              {
+                "params": [
+                  "name"
+                ],
+                "type": "field"
               },
               {
                 "params": [
-                  "state_pump"
+                  "value"
+                ],
+                "type": "alias"
+              }
+            ]
+          ],
+          "tags": []
+        },
+        {
+          "groupBy": [
+            {
+              "params": [
+                "tag2"
+              ],
+              "type": "tag"
+            }
+          ],
+          "hide": false,
+          "measurement": "heating.circuits.2.circulation.pump",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "E",
+          "resultFormat": "table",
+          "select": [
+            [
+              {
+                "params": [
+                  "status"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [
+                  "value"
                 ],
                 "type": "alias"
               }
@@ -204,34 +236,8 @@
       "title": "Panel Title",
       "transformations": [
         {
-          "id": "concatenate",
-          "options": {
-            "frameNameLabel": "frame",
-            "frameNameMode": "field"
-          }
-        },
-        {
-          "id": "groupBy",
-          "options": {
-            "fields": {
-              "Time": {
-                "aggregations": [],
-                "operation": null
-              },
-              "curcuit_name": {
-                "aggregations": [],
-                "operation": "groupby"
-              },
-              "mode_active": {
-                "aggregations": [],
-                "operation": "groupby"
-              },
-              "state_pump": {
-                "aggregations": [],
-                "operation": "groupby"
-              }
-            }
-          }
+          "id": "merge",
+          "options": {}
         }
       ],
       "type": "table"
@@ -1443,7 +1449,7 @@
       "type": "row"
     },
     {
-      "datasource": "${databaseVSM}",
+      "datasource": "-- Mixed --",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1514,6 +1520,7 @@
       "targets": [
         {
           "alias": "Boiler",
+          "datasource": "${databaseVSM}",
           "groupBy": [
             {
               "params": [
@@ -1551,6 +1558,7 @@
         },
         {
           "alias": "Outside",
+          "datasource": "${databaseVSM}",
           "groupBy": [
             {
               "params": [
@@ -1589,6 +1597,7 @@
         },
         {
           "alias": "Collector",
+          "datasource": "${databaseVSM}",
           "groupBy": [
             {
               "params": [
@@ -1627,6 +1636,7 @@
         },
         {
           "alias": "DHW",
+          "datasource": "${databaseVSM}",
           "groupBy": [
             {
               "params": [
@@ -1665,6 +1675,7 @@
         },
         {
           "alias": "Storage",
+          "datasource": "${databaseVSM}",
           "groupBy": [
             {
               "params": [
@@ -1703,6 +1714,7 @@
         },
         {
           "alias": "CommonSupply",
+          "datasource": "${databaseVSM}",
           "groupBy": [
             {
               "params": [
@@ -1741,6 +1753,7 @@
         },
         {
           "alias": "C1_Supply",
+          "datasource": "${databaseVSM}",
           "groupBy": [
             {
               "params": [
@@ -1779,6 +1792,7 @@
         },
         {
           "alias": "C2_Supply",
+          "datasource": "${databaseVSM}",
           "groupBy": [
             {
               "params": [
@@ -1804,6 +1818,45 @@
               {
                 "params": [
                   "value"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "mean"
+              }
+            ]
+          ],
+          "tags": []
+        },
+        {
+          "alias": "owmTemperature",
+          "datasource": "influx_OpenWeatherMap",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "linear"
+              ],
+              "type": "fill"
+            }
+          ],
+          "hide": false,
+          "measurement": "weather",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "I",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "temperature"
                 ],
                 "type": "field"
               },
@@ -1848,24 +1901,24 @@
         "type": "datasource"
       },
       {
-        "allValue": null,
-        "current": {},
-        "datasource": "${databaseVSM}",
-        "definition": "",
+        "current": {
+          "selected": false,
+          "text": "influx_OpenWeatherMap",
+          "value": "influx_OpenWeatherMap"
+        },
         "description": null,
         "error": null,
         "hide": 0,
         "includeAll": false,
         "label": null,
         "multi": false,
-        "name": "query0",
+        "name": "databaseOWM",
         "options": [],
-        "query": "",
+        "query": "influxdb",
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
-        "sort": 0,
-        "type": "query"
+        "type": "datasource"
       }
     ]
   },
@@ -1877,5 +1930,5 @@
   "timezone": "",
   "title": "ViessmanDashboard",
   "uid": "9WAaIhF7z",
-  "version": 5
+  "version": 6
 }
